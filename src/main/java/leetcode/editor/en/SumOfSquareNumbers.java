@@ -1,6 +1,6 @@
 package leetcode.editor.en;
-//Given a non-negative integer c, decide whether there're two integers a and b s
-//uch that a2 + b2 = c. 
+//Given a non-negative integer c, decide whether there're two integers a and b 
+//such that a² + b² = c. 
 //
 // 
 // Example 1: 
@@ -18,64 +18,38 @@ package leetcode.editor.en;
 //Output: false
 // 
 //
-// Example 3: 
-//
-// 
-//Input: c = 4
-//Output: true
-// 
-//
-// Example 4: 
-//
-// 
-//Input: c = 2
-//Output: true
-// 
-//
-// Example 5: 
-//
-// 
-//Input: c = 1
-//Output: true
-// 
-//
 // 
 // Constraints: 
 //
 // 
-// 0 <= c <= 231 - 1 
+// 0 <= c <= 2³¹ - 1 
 // 
-// Related Topics Math 
-// 👍 585 👎 352
+// Related Topics Math Two Pointers Binary Search 👍 1462 👎 475
 
-public class SumOfSquareNumbers {
-    public static void main(String[] args) {
-        Solution solution = new SumOfSquareNumbers().new Solution();
+public class SumOfSquareNumbers{
+    public static void main(String[] args){
+      Solution solution = new SumOfSquareNumbers().new Solution();
     }
-
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean judgeSquareSum(int c) {
-            if (c == 0 || c == 1 || c == 2) {
-                return true;
-            }
             int i = 0;
             int j = (int) Math.sqrt(c);
-            int pow;
             while (i <= j) {
-                pow = i * i + j * j;
-                if (pow == c) {
+                // i*i + j*j might be larger than Integer.MAX_VALUE
+                int diff1 = c - j * j;
+                int diff2 = i * i;
+                if (diff1 == diff2) {
                     return true;
-                } else if (pow > c) {
-                    j--;
-                } else {
+                } else if (diff1 > diff2) {
                     i++;
+                } else {
+                    j--;
                 }
             }
             return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
-
-}
-
+ 
+  }
