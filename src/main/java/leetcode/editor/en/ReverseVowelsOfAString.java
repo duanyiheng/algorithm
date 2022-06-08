@@ -41,14 +41,14 @@ public class ReverseVowelsOfAString {
             }
             int i = 0;
             int j = n - 1;
-            char[] res = new char[n];
+            char[] res = s.toCharArray();
             while (i <= j) {
-                char ci = s.charAt(i);
-                char cj = s.charAt(j);
+                char ci = res[i];
+                char cj = res[j];
                 if (isNotVowel(ci)) {
-                    res[i++] = ci;
+                    i++;
                 } else if (isNotVowel(cj)) {
-                    res[j--] = cj;
+                    j--;
                 } else {
                     res[i++] = cj;
                     res[j--] = ci;
